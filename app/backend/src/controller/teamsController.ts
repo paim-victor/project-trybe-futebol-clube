@@ -3,7 +3,7 @@ import ITeam from '../interfaces/Teams/ITeam';
 import TeamService from '../services/teamsService';
 
 class TeamController {
-  constructor(private _teams = new TeamService()) {}
+  private _teams = new TeamService();
 
   public findAll = async (
     _req: Request,
