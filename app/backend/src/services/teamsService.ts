@@ -11,7 +11,8 @@ class TeamService {
   };
 
   public getById = async (id: number) => {
-    const teamForId: ITeamID | null = await this._teams.findOne({ where: { id } });
+    const teamForId: ITeamID | null = await this
+      ._teams.findOne({ where: { id } });
     return teamForId;
   };
 }
