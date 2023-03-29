@@ -2,4 +2,9 @@ interface ITeam {
   id: number,
   teamName: string,
 }
-export default ITeam;
+
+interface ITeamID extends ITeam {
+  id: number;
+}
+
+export { ITeam, ITeamID };

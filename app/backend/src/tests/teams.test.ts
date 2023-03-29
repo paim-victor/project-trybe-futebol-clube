@@ -19,7 +19,7 @@ describe('/teams', () => {
   before(async () => {sinon.stub(teams, "findAll").resolves(teamsMock as teams[]);});
   after(() => { (teams.findAll as sinon.SinonStub).restore()});
 
-  it('Testa o metodo GET', async () => {
+  it('Testa o metodo GET para todos os times', async () => {
     chaiHttpResponse = await chai.request(app).get('/teams')
 
     expect(chaiHttpResponse.body).to.be.deep.equal(teamsMock)
