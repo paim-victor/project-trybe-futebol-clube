@@ -1,5 +1,5 @@
 import * as jwt from 'jsonwebtoken';
-import { TokenUser } from '../interfaces/Users/IUser';
+import { IUser, TokenUser } from '../interfaces/Users/IUser';
 import 'dotenv/config';
 
 const secret = process.env.JWT_SECRET || 'euOdeioJWT';
@@ -10,9 +10,9 @@ const JWTConfig: jwt.SignOptions = {
   algorithm: 'HS256',
 };
 
-const genToken = (payload: unknown): string => {
+const genToken = (payload: IUser): string => {
   const token = jwt.sign({ payload }, secret, JWTConfig);
-  console.log('Generated token:', token); // Adicionando console.log
+  console.log('Generated token:', token);
   return token;
 };
 
