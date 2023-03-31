@@ -1,8 +1,9 @@
 interface IUser {
-  email: string,
-  role: string,
-  id: number,
-  username: string,
+  id: number;
+  email: string;
+  password: string;
+  role: string;
+  username: string;
 }
 
 interface TokenUser extends IUser {
