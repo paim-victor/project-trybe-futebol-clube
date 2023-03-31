@@ -20,9 +20,9 @@ const validateToken = (token: string) => {
   console.log('Received token:', token);
   if (!token) return null;
   try {
-    const decoded = jwt.verify(token, secret) as TokenUser;
-    console.log('Decoded token:', decoded);
-    return decoded;
+    const decod = jwt.verify(token, secret) as TokenUser;
+    console.log('Decoded token:', decod);
+    return decod;
   } catch (err) {
     console.error(err);
     return null;
