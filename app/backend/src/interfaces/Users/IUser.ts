@@ -5,4 +5,9 @@ interface IUser {
   id: number,
   username: string,
 }
-export default IUser;
+
+interface TokenUser extends IUser {
+  role: string;
+}
+
+export { IUser, TokenUser };
