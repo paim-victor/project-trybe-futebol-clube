@@ -1,4 +1,6 @@
+import * as dotenv from 'dotenv';
 import * as express from 'express';
+import * as path from 'path';
 import teamsRouter from './routes/teamsRouter';
 import loginRouter from './routes/usersRouter';
 
@@ -7,6 +9,7 @@ class App {
 
   constructor() {
     this.app = express();
+    dotenv.config({ path: path.resolve(__dirname, '../.env') });
     this.config();
 
     // Não remover essa rota

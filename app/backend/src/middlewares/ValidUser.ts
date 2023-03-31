@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { NextFunction, Request, Response } from 'express';
 import { validateToken } from '../utils/Token';
 
@@ -25,6 +26,7 @@ class ValidUser {
 
   public validToken = (req: Request, res: Response, next: NextFunction) => {
     const { authorization } = req.headers;
+    console.log('AUTH: ', authorization);
     if (!authorization) {
       return res
         .status(401)

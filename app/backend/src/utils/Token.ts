@@ -2,7 +2,7 @@ import * as jwt from 'jsonwebtoken';
 import { TokenUser } from '../interfaces/Users/IUser';
 import 'dotenv/config';
 
-const secret = process.env.JWT_SECRET || '';
+const secret = process.env.JWT_SECRET || 'euOdeioJWT';
 
 console.log('JWT Secret:', secret);
 
@@ -17,11 +17,11 @@ const genToken = (payload: unknown): string => {
 };
 
 const validateToken = (token: string) => {
-  console.log('Received token:', token); // Adicionando console.log
+  console.log('Received token:', token);
   if (!token) return null;
   try {
     const decoded = jwt.verify(token, secret) as TokenUser;
-    console.log('Decoded token:', decoded); // Adicionando console.log
+    console.log('Decoded token:', decoded);
     return decoded;
   } catch (err) {
     console.error(err);
