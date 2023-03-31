@@ -6,6 +6,7 @@ class Users extends Model {
   declare teamName: string;
   declare email: string;
   declare password: string;
+  declare role: string;
 }
 
 Users.init({
@@ -15,10 +16,10 @@ Users.init({
     primaryKey: true,
     type: INTEGER,
   },
-  username: { type: STRING },
-  role: { type: STRING },
-  email: { type: STRING },
-  password: { type: STRING },
+  username: { type: STRING, allowNull: false },
+  role: { type: STRING, allowNull: false },
+  email: { type: STRING, allowNull: false },
+  password: { type: STRING, allowNull: false },
 }, {
   underscored: true,
   sequelize: db,
