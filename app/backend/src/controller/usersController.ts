@@ -18,9 +18,9 @@ class UserController {
 
   role = (req: Request, res: Response) => {
     const { userToken } = req.body;
-    const decodedToken = validateToken(userToken);
-    if (decodedToken) {
-      return res.status(200).json({ role: decodedToken.role });
+    const token = validateToken(userToken);
+    if (token) {
+      return res.status(200).json({ role: token.role });
     }
     return res.status(401).json({ message: 'Token must be a valid token' });
   };
