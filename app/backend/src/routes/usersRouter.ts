@@ -10,6 +10,7 @@ const userController = new UserController();
 const valid = new ValidUser();
 
 router.post('/', valid.validateLogin, userController.login);
-router.get('/role', valid.validateToken, userController.role);
+console.log('login route:', router);
+router.get('/role', valid.validToken, userController.role);
 
 export default router;

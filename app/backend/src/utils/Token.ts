@@ -1,30 +1,32 @@
 import * as jwt from 'jsonwebtoken';
-import { IUser, TokenUser } from '../interfaces/Users/IUser';
+import { TokenUser } from '../interfaces/Users/IUser';
+import 'dotenv/config';
 
-class Token {
-  public genToken = (user: IUser) => {
-    const secret: jwt.Secret = process.env.JWT_SECRET || 'jwt_secret';
-    console.log('segredo usado:', secret);
-    const options: jwt.SignOptions = { expiresIn: '13d', algorithm: 'HS256' };
+const secret = process.env.JWT_SECRET || '';
 
-    const { id, username, email, role } = user;
-    const token = jwt.sign({ id, username, email, role }, secret, options);
-    console.log('token gerado:', token);
+console.log('JWT Secret:', secret);
 
-    return token;
-  };
+const JWTConfig: jwt.SignOptions = {
+  algorithm: 'HS256',
+};
 
-  public validateToken = (token: string) => {
-    const tokenSecret: jwt.Secret = process.env.JWT_SECRET || 'jwt_secret';
-    try {
-      const user = jwt.verify(token, tokenSecret) as TokenUser;
-      console.log('usuario decodificado:', user);
-      return user;
-    } catch (err) {
-      console.error(err);
-      return null;
-    }
-  };
-}
+const genToken = (payload: unknown): string => {
+  const token = jwt.sign({ payload }, secret, JWTConfig);
+  console.log('Generated token:', token); // Adicionando console.log
+  return token;
+};
 
-export default Token;
+const validateToken = (token: string) => {
+  console.log('Received token:', token); // Adicionando console.log
+  if (!token) return null;
+  try {
+    const decoded = jwt.verify(token, secret) as TokenUser;
+    console.log('Decoded token:', decoded); // Adicionando console.log
+    return decoded;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+};
+
+export { genToken, validateToken };

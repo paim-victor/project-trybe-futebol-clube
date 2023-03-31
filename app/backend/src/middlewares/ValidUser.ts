@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import Token from '../utils/Token';
+import { validateToken } from '../utils/Token';
 
 class ValidUser {
   public validateLogin = (req: Request, res: Response, next:NextFunction) => {
@@ -23,7 +23,7 @@ class ValidUser {
     return next();
   };
 
-  public validateToken = (req: Request, res: Response, next: NextFunction) => {
+  public validToken = (req: Request, res: Response, next: NextFunction) => {
     const { authorization } = req.headers;
     if (!authorization) {
       return res
@@ -31,8 +31,8 @@ class ValidUser {
         .json({ message: 'Token not found' });
     }
     try {
-      const token = new Token();
-      const user = token.validateToken(authorization);
+      const user = validateToken(authorization);
+      console.log('USER:', user);
       req.body.userToken = user;
       return next();
     } catch (error) {
