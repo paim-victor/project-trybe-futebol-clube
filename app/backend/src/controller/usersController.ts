@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import UsersService from '../services/usersService';
 import Token from '../utils/Token';
 
-class LoginController {
+class UserController {
   private _users = new UsersService();
 
   login = async (req: Request, res: Response): Promise<Response> => {
@@ -18,12 +18,14 @@ class LoginController {
   };
 
   role = (req: Request, res: Response) => {
-    const { user } = req.body;
-    const { role } = user;
-    return res
-      .status(200)
-      .json({ role });
+    const { authorization } = req.headers;
+    const { userToken } = req.body;
+    if (authorization) {
+      return res
+        .status(200)
+        .json({ role: userToken.role });
+    }
   };
 }
 
-export default LoginController;
+export default UserController;

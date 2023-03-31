@@ -33,7 +33,7 @@ class ValidUser {
     try {
       const token = new Token();
       const user = token.validateToken(authorization);
-      req.body.user = user;
+      req.body.userToken = user;
       return next();
     } catch (error) {
       return res
