@@ -24,17 +24,16 @@ class ValidUser {
     return next();
   };
 
+  // contribuição Thiago Durante
   public validToken = (req: Request, res: Response, next: NextFunction) => {
-    const { authorization } = req.headers;
-    console.log('AUTH: ', authorization);
-    if (!authorization) {
-      return res
-        .status(401)
-        .json({ message: 'Token not found' });
-    }
     try {
+      const { authorization } = req.headers;
+      if (typeof authorization === 'undefined') {
+        return res
+          .status(401)
+          .json({ message: 'Token not found' });
+      }
       const user = validateToken(authorization);
-      console.log('USER:', user);
       req.body.userToken = user;
       return next();
     } catch (error) {

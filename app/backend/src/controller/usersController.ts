@@ -13,11 +13,12 @@ class UserController {
     const userToken = genToken(user.dataValues);
     return res
       .status(200)
-      .json({ userToken });
+      .json({ token: userToken });
   };
 
+  // contribuição Thiago Durante
   role = (req: Request, res: Response) => {
-    const { userToken } = req.body;
+    const userToken = req.headers.authorization as string;
     const token = validateToken(userToken);
     if (token) {
       return res.status(200).json({ role: token.role });

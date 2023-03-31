@@ -3,22 +3,23 @@ import * as jwt from 'jsonwebtoken';
 import { IUser, TokenUser } from '../interfaces/Users/IUser';
 
 dotenv.config();
-
-const secret = process.env.JWT_SECRET || 'flamengo';
+// contribuição Thiago Durante
+const secret = process.env.JWT_SECRET || 'jwt_secret';
 
 console.log('JWT Secret:', secret);
+const options: jwt.SignOptions = {
+  expiresIn: '1d',
+  algorithm: 'HS256',
+};
 
 const genToken = (payload: IUser) => {
-  const token = jwt.sign(payload, secret);
-  console.log('Generated token:', token);
+  const token = jwt.sign(payload, secret, options);
   return token;
 };
 
 const validateToken = (token: string) => {
-  console.log('Received token:', token);
   try {
     const decod = jwt.verify(token, secret) as TokenUser;
-    console.log('Decoded token:', decod);
     return decod;
   } catch (err) {
     console.error(err);
