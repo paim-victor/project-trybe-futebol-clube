@@ -1,5 +1,4 @@
 import { Router } from 'express';
-// import { validEmail, validPassword } from '../middlewares/validUser';
 import ValidUser from '../middlewares/ValidUser';
 
 import UserController from '../controller/usersController';
