@@ -11,4 +11,14 @@ const userLogin = {
   password: 'secret_admin'
 }
 
-export { usersMock, userLogin }
+const invalidPass = {
+  email: 'admin@admin.com',
+  passwrod: 'mengo'
+}
+
+const invalidEmail = {
+  email: 'zada.co',
+  password: 'admin123'
+}
+
+export { usersMock, userLogin, invalidPass, invalidEmail }

@@ -15,25 +15,27 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('/teams', () => {
-  let chaiHttpResponse: Response;
+  let response: Response;
 
   beforeEach (async () => {sinon.stub(teams, "findAll").resolves(teamsMock as teams[]);});
   afterEach (() => { (teams.findAll as sinon.SinonStub).restore()});
 
   it('Testa o metodo GET para todos os times', async () => {
-    chaiHttpResponse = await chai.request(app).get('/teams')
+    response = await chai.request(app).get('/teams')
 
-    expect(chaiHttpResponse.body).to.be.deep.equal(teamsMock)
-    expect(chaiHttpResponse.status).to.be.equal(200)
+    expect(response.body).to.be.deep.equal(teamsMock)
+    expect(response.status).to.be.equal(200)
   });
 
   beforeEach (async () => {sinon.stub(teams, "findOne").resolves(teamIdMock as teams);});
   afterEach (() => { (teams.findOne as sinon.SinonStub).restore()});
 
   it('Testa o metodo GET por id do time', async () => {
-    chaiHttpResponse = await chai.request(app).get('/teams/2')
+    response = await chai.request(app).get('/teams/2')
 
-    expect(chaiHttpResponse.body).to.be.deep.equal(teamIdMock)
-    expect(chaiHttpResponse.status).to.be.equal(200)
+    expect(response.body).to.be.deep.equal(teamIdMock)
+    expect(response.status).to.be.equal(200)
   });
+
+  
 });
