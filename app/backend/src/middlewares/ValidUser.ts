@@ -26,20 +26,16 @@ class ValidUser {
 
   // contribuição Thiago Durante
   public validToken = (req: Request, res: Response, next: NextFunction) => {
+    const { authorization } = req.headers;
+    if (typeof authorization === 'undefined') {
+      return res.status(401).json({ message: 'Token not found' });
+    }
     try {
-      const { authorization } = req.headers;
-      if (typeof authorization === 'undefined') {
-        return res
-          .status(401)
-          .json({ message: 'Token not found' });
-      }
       const user = validateToken(authorization);
-      req.body.userToken = user;
-      return next();
+      res.locals.userToken = user;
+      next();
     } catch (error) {
-      return res
-        .status(401)
-        .json({ message: 'Token must be a valid token' });
+      return res.status(401).json({ message: 'Token must be a valid token' });
     }
   };
 }

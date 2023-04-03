@@ -3,11 +3,11 @@ import db from '.';
 import teams from './teamsModel';
 
 class Matches extends Model {
-  declare id: number;
+  declare readonly id: number;
   declare homeTeamId: number;
   declare homeTeamGoals: number;
-  declare awaitTeamId: number;
-  declare awaitTeamGoals: number;
+  declare awayTeamId: number;
+  declare awayTeamGoals: number;
   declare inProgress: boolean;
 }
 
