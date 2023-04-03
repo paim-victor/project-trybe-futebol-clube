@@ -1,15 +1,15 @@
 import { Router } from 'express';
 import MatchesController from '../controller/matchesController';
-import ValidUser from '../middlewares/ValidUser';
+import matchesTokenValid from '../middlewares/matchesTokenValid';
 
 const router = Router();
 
 const matchesController = new MatchesController();
-const validate = new ValidUser();
+// const validate = new ValidUser();
 
 router.post(
   '/',
-  validate.validToken,
+  matchesTokenValid,
   matchesController.create,
 );
 router.get(
@@ -18,12 +18,12 @@ router.get(
 );
 router.patch(
   '/:id',
-  validate.validToken,
+  matchesTokenValid,
   matchesController.edit,
 );
 router.patch(
   '/:id/finish',
-  validate.validToken,
+  matchesTokenValid,
   matchesController.finish,
 );
 
