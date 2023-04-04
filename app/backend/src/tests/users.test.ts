@@ -25,15 +25,15 @@ describe('/login', () => {
     expect(response.status).to.be.equal(200)
   });
 
-  // it('Testa se ao inserir uma senha invalida, é possivel logar', async () => {
-  //   response = await chai.request(app).post('/login').send(invalidPass)
-  //   expect(response.status).to.be.equal(401);
-  //   expect(response.body.message).to.be.equal('Password invalid');
-  // });
+  it('Testa se ao inserir uma senha invalida, é possivel logar', async () => {
+    response = await chai.request(app).post('/login').send(invalidPass)
+    expect(response.status).to.be.equal(401);
+    expect(response.body.message).to.be.equal('Password invalid');
+  });
 
-  // it('Testa se ao inserir um email invalido, é possivel logar', async () => {
-  //   response = await chai.request(app).post('/login').send(invalidEmail)
-  //   expect(response.status).to.be.equal(401);
-  //   expect(response.body.message).to.be.equal('Email invalid');
-  // });
+  it('Testa se ao inserir um email invalido, é possivel logar', async () => {
+    response = await chai.request(app).post('/login').send(invalidEmail)
+    expect(response.status).to.be.equal(401);
+    expect(response.body.message).to.be.equal('Email invalid');
+  });
 });

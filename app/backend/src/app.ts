@@ -1,9 +1,10 @@
 import * as dotenv from 'dotenv';
 import * as express from 'express';
 import * as path from 'path';
+import leaderboardRouter from './routes/leaderboardRouter';
+import matchesRouter from './routes/matchesRouter';
 import teamsRouter from './routes/teamsRouter';
 import loginRouter from './routes/usersRouter';
-import matchesRouter from './routes/matchesRouter';
 
 class App {
   public app: express.Express;
@@ -31,6 +32,7 @@ class App {
     this.app.use('/team/:id', teamsRouter);
     this.app.use('/login', loginRouter);
     this.app.use('/matches', matchesRouter);
+    this.app.use('/leaderboard', leaderboardRouter);
   }
 
   public start(PORT: string | number):void {

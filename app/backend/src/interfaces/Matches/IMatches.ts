@@ -15,4 +15,13 @@ interface INewMatch extends ICreate {
   inProgress: boolean;
 }
 
-export { ICreate, IEdit, INewMatch };
+interface IMatchFull {
+  id: number;
+  homeTeamId: number;
+  awayTeamId: number;
+  homeTeamGoals: number;
+  awayTeamGoals: number;
+  inProgress: boolean;
+}
+
+export { ICreate, IEdit, INewMatch, IMatchFull };
