@@ -1,8 +1,8 @@
 # ⚽ Projeto Trybe Futebol Clube
 
-Este projeto é um exercício prático proposto pela escola de programação Trybe, onde o objetivo é desenvolver um sistema simples de gerenciamento de um time de futebol.
+Esse projeto tem como finalidade a criação de uma API que deve ser consumida por um front-end já disponibilizado.
 
-O sistema consiste em uma interface de linha de comando (CLI) que permite ao usuário cadastrar jogadores, listar os jogadores do time, buscar jogadores pelo nome e excluir jogadores.
+O aplicativo TFC é um site informativo sobre partidas e classificações de futebol!
 
 ## ⏯️ Como executar o projeto
 
