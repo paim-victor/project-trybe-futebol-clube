@@ -1,4 +1,4 @@
-# Projeto Trybe Futebol Clube
+# :soccer: Projeto Trybe Futebol Clube
 
 Este projeto é um exercício prático proposto pela escola de programação Trybe, onde o objetivo é desenvolver um sistema simples de gerenciamento de um time de futebol.
 
